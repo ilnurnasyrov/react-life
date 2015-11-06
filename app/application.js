@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import ApplicationComponent from "./components/application_component";
+import ApplicaitonView from "./views/application_view";
 
 function main() {
   let g = document.createElement('div');
@@ -8,7 +8,7 @@ function main() {
   document.body.appendChild(g);
 
   ReactDOM.render(
-    <ApplicationComponent />,
+    <ApplicaitonView />,
     document.getElementById("application")
   );
 };
