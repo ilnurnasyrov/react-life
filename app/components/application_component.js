@@ -1,9 +1,9 @@
 import React from "react";
-import TodoListComponent from "./todo_list_component";
+import TodoBoxComponent from "./todo_box_component";
 
 const ApplicationComponent = React.createClass({
   render: function () {
-    return <TodoListComponent/>;
+    return <TodoBoxComponent/>;
   }
 });
 
