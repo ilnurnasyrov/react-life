@@ -1,3 +1,3 @@
 import Alt from "alt";
 
-default export new Alt();
+export default new Alt();

@@ -1,24 +1,25 @@
 import alt from "../alt";
+import BoardActions from "../actions/board_actions";
 
-const Size = 100;
+const Size = 50;
 const MaxIndex = Size - 1;
 
-function nextGeneration(m) {
-  let next = [];
+function nextGeneration(generation) {
+  let nextGeneration = [];
   for(let x = 0; x < MaxIndex; x++) {
-    next[x] = [];
+    nextGeneration[x] = [];
 
     for(let y = 0; y < MaxIndex; y++) {
-      next[x][y] = checkCellAlive(m, x, y);
+      nextGeneration[x][y] = checkCellAlive(generation, x, y);
     }
   }
 
-  return next;
+  return nextGeneration;
 }
 
-function checkCellAlive(m, x, y) {
-  let count = neighborhoodsCount(m, x, y);
-  let live = m[x][y];
+function checkCellAlive(generation, x, y) {
+  let count = neighborhoodsCount(generation, x, y);
+  let live = generation[x][y];
 
   if (count == 3) return true;
   if (count == 2 && live) return true;
@@ -26,13 +27,14 @@ function checkCellAlive(m, x, y) {
   return false;
 }
 
-function neighborhoodsCount(m, x, y) {
+function neighborhoodsCount(generation, x, y) {
   let count = 0;
 
   for(let i = -1; i < 2; i++) {
     for(let j = -1; j < 2; j++) {
       if(!i && !j) continue;
-      if(!m[x + i][y + j]) continue;
+      if(!generation[x + i]) continue;
+      if(!generation[x + i][y + j]) continue;
 
       count++;
     }
@@ -53,12 +55,13 @@ class BoardStore {
     }
 
     this.bindListeners({
-      generateNewState: BoardActions.NEXT_GENERATION;
+      makeNewGeneration: BoardActions.START
     });
   }
 
-  generateNewState() {
-    setState(nextGeneration(this.cells));
+  makeNewGeneration() {
+    console.log("generate new generation")
+    this.cells = nextGeneration(this.cells);
   }
 }
 

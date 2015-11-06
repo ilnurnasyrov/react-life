@@ -3,8 +3,8 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./app/application.js",
   output: {
-      path: "build",
-      filename: "bundle.js"
+    path: "build",
+    filename: "bundle.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -13,6 +13,11 @@ module.exports = {
   ],
   module: {
     loaders: [
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
+      },
       {
         test: /\.js?$/,
         exclude: /(node_modules)/,
