@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "React TODO"
+      title: "Game of Life"
     })
   ],
   module: {
