@@ -4,30 +4,37 @@ import BoardActions from "../actions/board_actions";
 import "./board_view.styl";
 
 const BoardView = React.createClass({
-  getInitialState: function () {
+  getInitialState() {
     return BoardStore.getState();
   },
-  componentDidMount: function () {
+  componentDidMount() {
     BoardStore.listen(this.onChange);
   },
   componentWillUnmount() {
     BoardStore.unlisten(this.onChange);
   },
-  onChange: function (state) {
+  onChange(state) {
     this.setState(state);
   },
-  toggleCell: function (x, y) {
-    return () => { BoardActions.toggleCell(x, y) }
+  toggleCell(x, y) {
+    return () => BoardActions.toggleCell(x, y)
   },
-  render: function () {
+  renderCell(cell, y, column) {
+    return <div
+      className={`cell ${cell}`}
+      key={y}
+      onClick={this.toggleCell(column.x, y)}
+    />
+  },
+  renderColumn(column, x) {
+    column.x = x;
+    return <div className="column" key={x}>
+      {column.map(this.renderCell)}
+    </div>
+  },
+  render() {
     return <div className="board">
-      {this.state.cells.map((column, x) => {
-        return <div className="column" key={x}>
-          {column.map((cell, y) => {
-            return <div className={`cell ${cell}`} key={y} onClick={this.toggleCell(x, y)}/>
-          })}
-        </div>
-      })}
+      {this.state.cells.map(this.renderColumn)}
     </div>
   }
 });

@@ -3,10 +3,10 @@ import BoardActions from "../actions/board_actions";
 import "./control_panel.styl";
 
 const StartButton = React.createClass({
-  onClick: function () {
+  onClick() {
     BoardActions.play();
   },
-  render: function () {
+  render() {
     return <div className="playButton" onClick={this.onClick}>
       Play
     </div>
@@ -14,10 +14,10 @@ const StartButton = React.createClass({
 })
 
 const StopButton = React.createClass({
-  onClick: function () {
+  onClick() {
     BoardActions.stop();
   },
-  render: function () {
+  render() {
     return <div className="stopButton" onClick={this.onClick}>
       Stop
     </div>
@@ -25,7 +25,7 @@ const StopButton = React.createClass({
 })
 
 const ControlPanel = React.createClass({
-  render: function () {
+  render() {
     return <div className="controllPanel">
       <StartButton/>
       <StopButton/>

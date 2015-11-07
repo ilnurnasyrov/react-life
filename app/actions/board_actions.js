@@ -22,7 +22,7 @@ class BoardActions {
   }
 
   toggleCell(x, y) {
-    this.dispatch({ x: x, y: y });
+    this.dispatch({x: x, y: y});
   }
 }
 

@@ -3,7 +3,7 @@ import BoardView from "./board_view";
 import ControlPanel from "./control_panel";
 
 const ApplicationView = React.createClass({
-  render: function () {
+  render() {
     return <div>
       <BoardView/>
       <ControlPanel/>
