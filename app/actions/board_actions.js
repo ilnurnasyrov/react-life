@@ -3,10 +3,6 @@ import alt from "../alt";
 let interval;
 
 class BoardActions {
-  nextGeneration() {
-    this.dispatch();
-  }
-
   play() {
     this.dispatch();
     if (interval) clearInterval(interval);
@@ -19,6 +15,14 @@ class BoardActions {
   stop() {
     this.dispatch();
     clearInterval(interval)
+  }
+
+  nextGeneration() {
+    this.dispatch();
+  }
+
+  toggleCell(x, y) {
+    this.dispatch({ x: x, y: y });
   }
 }
 

@@ -55,13 +55,17 @@ class BoardStore {
     }
 
     this.bindListeners({
-      makeNewGeneration: BoardActions.NEXT_GENERATION
+      makeNewGeneration: BoardActions.NEXT_GENERATION,
+      toggleCell: BoardActions.TOGGLE_CELL
     });
   }
 
   makeNewGeneration() {
-    console.log("generate new generation")
     this.cells = nextGeneration(this.cells);
+  }
+
+  toggleCell(cell) {
+    this.cells[cell.x][cell.y] = !this.cells[cell.x][cell.y];
   }
 }
 

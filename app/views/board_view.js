@@ -1,5 +1,6 @@
 import React from "react";
 import BoardStore from "../stores/board_store";
+import BoardActions from "../actions/board_actions";
 import "./board_view.styl";
 
 const BoardView = React.createClass({
@@ -15,12 +16,15 @@ const BoardView = React.createClass({
   onChange: function (state) {
     this.setState(state);
   },
+  toggleCell: function (x, y) {
+    return () => { BoardActions.toggleCell(x, y) }
+  },
   render: function () {
     return <div className="board">
-      {this.state.cells.map((row, i) => {
-        return <div className="row" key={i}>
-          {row.map((cell, j) => {
-            return <div className={`cell ${cell}`} key={j}/>
+      {this.state.cells.map((column, x) => {
+        return <div className="column" key={x}>
+          {column.map((cell, y) => {
+            return <div className={`cell ${cell}`} key={y} onClick={this.toggleCell(x, y)}/>
           })}
         </div>
       })}
