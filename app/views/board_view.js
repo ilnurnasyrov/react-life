@@ -1,6 +1,5 @@
 import React from "react";
 import BoardStore from "../stores/board_store";
-import BoardActions from "../actions/board_actions";
 import "./board_view.styl";
 
 const BoardView = React.createClass({
@@ -8,7 +7,6 @@ const BoardView = React.createClass({
     return BoardStore.getState();
   },
   componentDidMount: function () {
-    BoardActions.start();
     BoardStore.listen(this.onChange);
   },
   componentWillUnmount() {

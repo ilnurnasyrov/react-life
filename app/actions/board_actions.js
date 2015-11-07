@@ -1,14 +1,24 @@
 import alt from "../alt";
 
+let interval;
+
 class BoardActions {
-  start() {
-    this.interval = setInterval(function () {
-      this.dispatch();
+  nextGeneration() {
+    this.dispatch();
+  }
+
+  play() {
+    this.dispatch();
+    if (interval) clearInterval(interval);
+
+    interval = setInterval(function () {
+      this.actions.nextGeneration();
     }.bind(this), 200)
   }
 
   stop() {
-    clearInterval(this.interval)
+    this.dispatch();
+    clearInterval(interval)
   }
 }
 

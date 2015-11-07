@@ -55,7 +55,7 @@ class BoardStore {
     }
 
     this.bindListeners({
-      makeNewGeneration: BoardActions.START
+      makeNewGeneration: BoardActions.NEXT_GENERATION
     });
   }
 
