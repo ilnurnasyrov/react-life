@@ -1,7 +1,7 @@
 import alt from "../alt";
 import BoardActions from "../actions/board_actions";
 
-const Size = 50;
+const Size = 70;
 
 function makeGeneration(callback) {
   let cells = [];

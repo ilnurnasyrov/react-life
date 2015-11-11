@@ -1,4 +1,11 @@
 {
+  "name": "GameOfLife",
+  "license": "UNLICENSED",
+  "version": "1.0.3",
+  "repository" : {
+    "type": "git",
+    "url": "git@github.com:ilnurnasyrov/react-life.git"
+  },
   "scripts": {
     "start": "webpack-dev-server"
   },
