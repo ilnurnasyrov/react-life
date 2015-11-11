@@ -4,16 +4,6 @@ import Interval from "../lib/interval";
 let interval = new Interval();
 
 class BoardActions {
-  play() {
-    this.dispatch();
-    interval.run(this.actions.nextGeneration)
-  }
-
-  stop() {
-    this.dispatch();
-    interval.stop(this.actions.nextGeneration)
-  }
-
   toggleCell(x, y) { this.dispatch({x: x, y: y}) }
 
   nextGeneration() { this.dispatch() }
@@ -21,6 +11,10 @@ class BoardActions {
   randomize() { this.dispatch() }
 
   clear() { this.dispatch() }
+
+  play() { interval.run(this.actions.nextGeneration) }
+
+  stop() { interval.stop() }
 
   speedUp () {
     interval.changeDelay((delay) => delay / 2.0);
