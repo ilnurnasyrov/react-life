@@ -10,7 +10,10 @@ class BoardActions {
 
   randomize() { this.dispatch() }
 
-  clear() { this.dispatch() }
+  clear() {
+    this.dispatch();
+    interval.stop();
+  }
 
   play() { interval.run(this.actions.nextGeneration) }
 
