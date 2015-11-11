@@ -1,28 +1,33 @@
 import alt from "../alt";
+import Interval from "../lib/interval";
 
-let interval;
+let interval = new Interval();
 
 class BoardActions {
   play() {
     this.dispatch();
-    if (interval) clearInterval(interval);
-
-    interval = setInterval(function () {
-      this.actions.nextGeneration();
-    }.bind(this), 200)
+    interval.run(this.actions.nextGeneration)
   }
 
   stop() {
     this.dispatch();
-    clearInterval(interval)
+    interval.stop(this.actions.nextGeneration)
   }
 
-  nextGeneration() {
-    this.dispatch();
+  toggleCell(x, y) { this.dispatch({x: x, y: y}) }
+
+  nextGeneration() { this.dispatch() }
+
+  randomize() { this.dispatch() }
+
+  clear() { this.dispatch() }
+
+  speedUp () {
+    interval.changeDelay((delay) => delay / 2.0);
   }
 
-  toggleCell(x, y) {
-    this.dispatch({x: x, y: y});
+  speedDown() {
+    interval.changeDelay((delay) => delay * 2.0);
   }
 }
 

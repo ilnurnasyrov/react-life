@@ -1,12 +1,12 @@
 import React from "react";
 import BoardView from "./board_view";
-import ControlPanel from "./control_panel";
+import BoardControl from "./board_control";
 
 const ApplicationView = React.createClass({
   render() {
     return <div>
       <BoardView/>
-      <ControlPanel/>
+      <BoardControl/>
     </div>
   }
 });
