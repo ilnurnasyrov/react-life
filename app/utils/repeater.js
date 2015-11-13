@@ -1,20 +1,16 @@
-class Interval {
+class Repeater {
   constructor (delay) {
-    this.delay = delay || 400;
+    this.delay = delay || 200;
   }
 
   changeDelay(calc) {
     this.delay = calc(this.delay);
-    if(this.interval) {
-      this.stop();
-      this._run();
-    }
+
+    if(this.interval) this._run();
   }
 
   run(callback) {
-    this.delay = this.delay || 400;
     this.callback = callback;
-    this.stop();
     this._run();
   }
 
@@ -24,8 +20,9 @@ class Interval {
   }
 
   _run() {
+    this.stop();
     this.interval = setInterval(this.callback, this.delay);
   }
 }
 
-export default Interval;
+export default Repeater;

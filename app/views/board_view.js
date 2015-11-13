@@ -34,7 +34,20 @@ const BoardView = React.createClass(  {
     </div>
   },
   updateView(cells) {
-    displayGeneration(cells);
+    let board_size = cells.length;
+
+    for(let x = 0; x < board_size; x++) {
+      for(let y = 0; y < board_size; y++) {
+        let id = x + ";" + y;
+        let cell = document.getElementById(id);
+
+        if(cells[x][y]) {
+          cell.setAttribute("class", "cell true");
+        } else {
+          cell.setAttribute("class", "cell false");
+        }
+      }
+    }
   },
   shouldComponentUpdate(_props, state) {
     this.updateView(state.cells)
@@ -46,20 +59,5 @@ const BoardView = React.createClass(  {
     </div>
   }
 });
-
-function displayGeneration(gen) {
-  for(let x = 0; x < gen.length; x++) {
-    for(let y = 0; y < gen.length; y++) {
-      let id = x + ";" + y;
-      let cell = document.getElementById(id);
-
-      if(gen[x][y]) {
-        cell.setAttribute("class", "cell true");
-      } else {
-        cell.setAttribute("class", "cell false");
-      }
-    }
-  }
-}
 
 export default BoardView;

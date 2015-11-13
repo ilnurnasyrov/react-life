@@ -1,7 +1,7 @@
 import alt from "../alt";
-import Interval from "../lib/interval";
+import Repeater from "../utils/repeater";
 
-let interval = new Interval();
+let repeater = new Repeater();
 
 class BoardActions {
   toggleCell(x, y) { this.dispatch({x: x, y: y}) }
@@ -12,19 +12,19 @@ class BoardActions {
 
   clear() {
     this.dispatch();
-    interval.stop();
+    repeater.stop();
   }
 
-  play() { interval.run(this.actions.nextGeneration) }
+  play() { repeater.run(this.actions.nextGeneration) }
 
-  stop() { interval.stop() }
+  stop() { repeater.stop() }
 
   speedUp () {
-    interval.changeDelay((delay) => delay / 2.0);
+    repeater.changeDelay((delay) => delay / 2.0);
   }
 
   speedDown() {
-    interval.changeDelay((delay) => delay * 2.0);
+    repeater.changeDelay((delay) => delay * 2.0);
   }
 }
 
