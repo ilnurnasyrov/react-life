@@ -19,25 +19,12 @@ const BoardView = React.createClass(  {
   toggleCell(x, y) {
     return () => BoardActions.toggleCell(x, y)
   },
-  renderCell(cell, y, column) {
-    return <div
-      className={`cell ${cell}`}
-      key={y}
-      id={column.x + ";" + y}
-      onClick={this.toggleCell(column.x, y)}
-    />
-  },
-  renderColumn(column, x) {
-    column.x = x;
-    return <div className="column" key={x}>
-      {column.map(this.renderCell)}
-    </div>
-  },
   updateView(cells) {
-    let board_size = cells.length;
+    let xSize = cells.length;
+    let ySize = cells[0].length;
 
-    for(let x = 0; x < board_size; x++) {
-      for(let y = 0; y < board_size; y++) {
+    for(let x = 0; x < xSize; x++) {
+      for(let y = 0; y < ySize; y++) {
         let id = x + ";" + y;
         let cell = document.getElementById(id);
 
@@ -52,6 +39,20 @@ const BoardView = React.createClass(  {
   shouldComponentUpdate(_props, state) {
     this.updateView(state.cells)
     return false;
+  },
+  renderCell(cell, y, column) {
+    return <div
+      className={`cell ${cell}`}
+      key={y}
+      id={column.x + ";" + y}
+      onClick={this.toggleCell(column.x, y)}
+    />
+  },
+  renderColumn(column, x) {
+    column.x = x;
+    return <div className="column" key={x}>
+      {column.map(this.renderCell)}
+    </div>
   },
   render() {
     return <div className="board">

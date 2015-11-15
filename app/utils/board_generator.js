@@ -1,28 +1,28 @@
-const DefaultSize = 70;
+const DefaultYSize = 70;
+const DefaultXSize = 140;
 
 class BoardGenerator {
-  emptyGeneration(size = DefaultSize) {
-    return this._makeGeneration(size, () => false)
+  emptyGeneration() {
+    return this._makeGeneration(() => false)
   }
 
-  randomGeneration(size = DefaultSize) {
-    return this._makeGeneration(size, () => Math.random() < 0.5)
+  randomGeneration() {
+    return this._makeGeneration(() => Math.random() < 0.5)
   }
 
   nextGeneration(generation) {
     return this._makeGeneration(
-      DefaultSize,
       (x, y) => this._checkCellAlive(x, y, arguments[0]),
       generation
     )
   }
 
-  _makeGeneration(size, callback, ...args) {
+  _makeGeneration(callback, ...args) {
     let cells = [];
-    for(let x = 0; x < size; x++) {
+    for(let x = 0; x < DefaultXSize; x++) {
       cells[x] = [];
 
-      for(let y = 0; y < size; y++) {
+      for(let y = 0; y < DefaultYSize; y++) {
         cells[x][y] = callback(x, y, args);
       }
     }

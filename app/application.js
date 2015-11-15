@@ -12,6 +12,7 @@ function main() {
 function applicationDom() {
   let g = document.createElement('div');
   g.setAttribute("id", "application");
+  g.setAttribute("class", "container");
   document.body.appendChild(g);
 
   return document.getElementById("application");
