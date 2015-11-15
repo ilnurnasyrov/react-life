@@ -3,7 +3,7 @@
   "description": "Conway's Game of Life",
   "license": "UNLICENSED",
   "version": "1.0.3",
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "git@github.com:ilnurnasyrov/react-life.git"
   },
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "alt": "^0.17.8",
+    "bootstrap": "^3.3.5",
     "react": "^0.14.1",
     "react-dom": "^0.14.1"
   }
